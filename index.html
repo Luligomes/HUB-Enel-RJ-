@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Indicadores - Enel RJ</title>
+    
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="Hub centralizado de indicadores da Enel RJ. Acesse os principais painéis operacionais, gestão de pessoas e gestão operacional em um único lugar.">
+    <meta name="keywords" content="Enel, Enel RJ, Indicadores, Dashboard, Power BI, KPIs, Gestão Operacional, Gestão de Pessoas">
+    <meta name="author" content="Enel RJ">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilo customizado -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Menu Lateral Fixo -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <!-- Logo MRO -->
+                <a href="#" class="logo-link" id="logo-home" title="Página Inicial - Hub de Indicadores">
+                    <div class="logo-wrapper">
+                        <img src="mro_logo.png" alt="MRO" class="mro-logo-img">
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Menu de Navegação -->
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <button class="nav-button active" data-category="all" id="btn-visao-geral">
+                            <span class="nav-icon-container">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="9"></rect>
+                                    <rect x="14" y="3" width="7" height="5"></rect>
+                                    <rect x="14" y="12" width="7" height="9"></rect>
+                                    <rect x="3" y="16" width="7" height="5"></rect>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Visão Geral</span>
+                            <svg class="chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-button" data-category="kpis-operacionais" id="btn-kpis-operacionais">
+                            <span class="nav-icon-container">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg>
+                            </span>
+                            <span class="nav-text">KPIs Operacionais</span>
+                            <svg class="chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-button" data-category="gestao-pessoas" id="btn-gestao-pessoas">
+                            <span class="nav-icon-container">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Gestão de Pessoas</span>
+                            <svg class="chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-button" data-category="gestao-operacional" id="btn-gestao-operacional">
+                            <span class="nav-icon-container">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Gestão Operacional</span>
+                            <svg class="chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    <li class="nav-item" style="margin-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 16px;">
+                        <button class="nav-button" id="btn-collapse-sidebar">
+                            <span class="nav-icon-container">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Ocultar Menu</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+        </aside>
+        
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <!-- Topbar / Cabeçalho Superior -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Sidebar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <h1 class="topbar-title">Gestão de Indicadores - <span class="accent-text">Enel RJ</span></h1>
+                </div>
+
+            </header>
+            
+            <!-- Área do Painel Dinâmico -->
+            <section class="dashboard-viewport" id="dashboard-viewport">
+                <div class="dashboard-header">
+                    <span class="dashboard-subtitle" id="view-subtitle">HUB DE INDICADORES</span>
+                    <h2 class="dashboard-title" id="view-title">Bem-vindo ao Hub de Indicadores</h2>
+                    <p class="dashboard-description" id="view-description">
+                        Acesse os principais painéis e acompanhe os indicadores estratégicos da Enel RJ.
+                    </p>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <!-- Grid de Cards de Indicadores -->
+                <div class="indicators-grid" id="indicators-grid">
+                    <!-- Os cards serão gerados dinamicamente via JS ou exibidos aqui -->
+                </div>
+            </section>
+
+            <!-- Visualizador Embutido de Power BI (Iframe/Detail Mode) -->
+            <section class="iframe-viewport" id="iframe-viewport" style="display: none;">
+                <div class="iframe-header">
+                    <div class="iframe-header-left">
+                        <button class="back-btn" id="btn-voltar-dashboard" title="Voltar ao Painel">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            Voltar ao Painel
+                        </button>
+                        <div class="iframe-info">
+                            <span class="iframe-category" id="iframe-category-text">KPIs Operacionais</span>
+                            <h3 class="iframe-title" id="iframe-title-text">Indicador Selecionado</h3>
+                        </div>
+                    </div>
+                    <div class="iframe-header-right">
+                        <a href="#" target="_blank" class="external-link-btn" id="iframe-external-link">
+                            Abrir em Nova Aba
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="iframe-container">
+                    <div class="iframe-loader" id="iframe-loader">
+                        <div class="spinner"></div>
+                        <p>Carregando Relatório do Power BI...</p>
+                    </div>
+                    <iframe src="" id="report-iframe" frameborder="0" allowFullScreen="true"></iframe>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+
+
+    <!-- Script de inicialização e dados -->
+    <script src="app.js"></script>
+</body>
+</html>
