@@ -20,7 +20,7 @@ const indicatorsData = [
         description: "Acompanhe as principais métricas de desempenho e performance da operação CLC.",
         category: "kpis-operacionais",
         categoryLabel: "KPIs Operacionais",
-        link: "https://app.powerbi.com/view?r=eyJrIjoiZDBmOTIyZjItODg1MC00YTViLTlmNTMtODE0ZGVhNjI0ZDg3IiwidCI6IjdiY2I2NGEwLTQzZWYtNDI1ZS05YmI3LTY4MWRhMzkxMDY5MyJ9",
+        link: "https://app.powerbi.com/view?r=eyJrIjoiNmQzZWFmMmQtYzRiMS00YTBmLWIyYTItZmRjYzllNTIxYzVhIiwidCI6IjdiY2I2NGEwLTQzZWYtNDI1ZS05YmI3LTY4MWRhMzkxMDY5MyJ9",
         icon: `<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line><polyline points="22 4 12 14 6 8 2 12"></polyline></svg>`
     },
     {
@@ -58,7 +58,7 @@ const indicatorsData = [
         description: "Controle das avaliações DBO realizadas pelos líderes.",
         category: "gestao-pessoas",
         categoryLabel: "Gestão de Pessoas",
-        link: "https://app.powerbi.com/view?r=eyJrIjoiYTI1NTBlZjItMWM2My00ZDQ3LTk4MzktYWMxYmFhMmM2OTk4IiwidCI6IjdiY2I2NGEwLTQzZWYtNDI1ZS05YmI3LTY4MWRhMzkxMDY5MyJ9",
+        link: "https://dbo-mro.vercel.app/login",
         icon: `<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line></svg>`
     },
     
@@ -117,7 +117,7 @@ const categoryMetaData = {
 };
 
 // Elementos do DOM
-const sidebarButtons = document.querySelectorAll(".nav-button");
+const sidebarButtons = document.querySelectorAll(".nav-button[data-category]");
 const indicatorsGrid = document.getElementById("indicators-grid");
 const dashboardViewport = document.getElementById("dashboard-viewport");
 const iframeViewport = document.getElementById("iframe-viewport");
@@ -292,12 +292,26 @@ logoHome.addEventListener("click", (e) => {
     setActiveTab("all", btnVisaoGeral);
 });
 
-// Event Listener para abrir/fechar Menu Lateral no Mobile/Responsivo
+// Event Listener para abrir/fechar Menu Lateral no Mobile/Responsivo ou Desktop
 menuToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("open");
+    if (window.innerWidth <= 1024) {
+        sidebar.classList.toggle("open");
+    } else {
+        document.body.classList.toggle("sidebar-collapsed");
+    }
 });
 
-
+// Event Listener do botão Ocultar Menu da sidebar
+const btnCollapseSidebar = document.getElementById("btn-collapse-sidebar");
+if (btnCollapseSidebar) {
+    btnCollapseSidebar.addEventListener("click", () => {
+        if (window.innerWidth > 1024) {
+            document.body.classList.add("sidebar-collapsed");
+        } else {
+            sidebar.classList.remove("open");
+        }
+    });
+}
 
 // Inicialização da Página
 document.addEventListener("DOMContentLoaded", () => {

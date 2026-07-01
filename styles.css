@@ -986,6 +986,20 @@ body {
 /* ==========================================================================
    Responsividade & Ajustes Adaptativos
    ========================================================================== */
+@media (min-width: 1025px) {
+    body.sidebar-collapsed .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    body.sidebar-collapsed .main-content {
+        margin-left: 0;
+    }
+    
+    body.sidebar-collapsed .menu-toggle-btn {
+        display: block;
+    }
+}
+
 @media (max-width: 1024px) {
     .sidebar {
         transform: translateX(-100%);
